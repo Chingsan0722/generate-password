@@ -20,7 +20,10 @@ function randomPassword(option) {
   if (option.excludeCharacters) {
     collection = collection.filter(character => !option.excludeCharacters.includes(character))
   }
-  for (let i = 0; i <= Number(option.length); i++) {
+  if (collection.length === 0){
+    return 'There is no valid character to generate!'
+  }
+  for (let i = 0; i < Number(option.length); i++) {
     const randomIndex = Math.floor(Math.random() * collection.length)
     password += collection[randomIndex]
     if (option.length < collection.length) {
